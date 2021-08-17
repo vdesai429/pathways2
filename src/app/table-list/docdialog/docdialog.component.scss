@@ -1,0 +1,48 @@
+.mat-dialog-content {
+    max-height: 85%;
+    overflow-y: auto;
+    min-height: 90%;
+}
+
+.buttonrow {
+    margin-left: -15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.selectedbutton {
+    background-color: darkslateblue;
+    color: white;
+    margin-right: 5px;
+}
+
+.otherbutton {
+    margin-right: 5px;
+}
+
+.ql-container, .ql-snow {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+    font-size: 1rem !important;
+  }
+
+  b, strong {
+      font-weight: 600 !important;
+  }
+
+.ck-content {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+    font-size: 1rem !important;
+}
+
+.dropdown-item:hover, .prevDrop:hover {
+    cursor:pointer !important;
+    background-color: lightgray !important;
+    box-shadow: none;
+}
+
+.modifyby {
+    font-size: 0.9em;
+    font-style: italic;
+    float:right;
+    color: gray;
+}

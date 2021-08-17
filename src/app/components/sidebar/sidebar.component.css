@@ -1,0 +1,23 @@
+.separator {
+    border-bottom: 1px solid #ddd;
+}
+
+.darkgreen.active > a {
+    background-color: darkgreen !important;
+}
+
+.darkslate.active > a {
+    background-color: darkslateblue !important;
+}
+
+.steelblue.active > a {
+    background-color: steelblue !important;
+}
+
+.darkcyan.active > a {
+    background-color: darkcyan !important;
+}
+
+.separatorline {
+    border-top: 1px solid #ddd;
+}

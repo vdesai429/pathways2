@@ -1,0 +1,68 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                 
+                <div class="card">
+                    <div class="card-header card-color row">
+                        <h4 class="card-title col-sm-12">Login</h4>
+                         <div class="card-category col-sm-12 col-md-10"> Documents - Admin Portal</div>
+                         <div *ngIf="loginalert"><br><h2 class="mat-h2">{{loginalerttext}}</h2></div>
+                         <div *ngIf="resetcomplete"><br><h2 class="mat-h2">Password Reset - Please check your email</h2></div>
+                         
+                      </div>
+                        
+
+                        
+                     
+                        
+                   
+                    
+                    <div class="card-body" *ngIf="!forgot"> 
+                        <form [formGroup]="loginForm">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Username</mat-label>
+                                <input matInput formControlName="username" placeholder="">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Password</mat-label>
+                                <input matInput formControlName="password" type="password" placeholder="" (keyup.enter)="login()">
+                            </mat-form-field>
+                    </form>
+                  </div>
+                  <div class="card-body" *ngIf="forgot"> 
+                      <form [formGroup]="forgotForm">
+                          <mat-form-field appearance="outline">
+                              <mat-label>Email</mat-label>
+                              <input matInput formControlName="email" placeholder="">
+                          </mat-form-field>
+                         
+                  </form>
+                </div>
+                      <div class="card-footer" style="text-align:right">
+                          <button type="button" *ngIf="!forgot" (click)="forgot = true" mat-button>Forgot Password</button>
+                          <button type="button" *ngIf="!forgot" mat-raised-button color="primary" (click)="login()" [disabled]="!loginForm.valid">
+                            <span *ngIf="!loading">Login</span>
+                            <span *ngIf="loading">Logging in...</span>
+                            
+                          </button>
+                          
+                          <button type="button" *ngIf="forgot" mat-button color="primary" (click)="forgot = false; resetmessage=false; resetcomplete=false">Close</button>
+                          <button type="button" *ngIf="forgot" mat-raised-button color="primary" (click)="resetpass(forgotForm.value.email); resetmessage=true" [disabled]="!forgotForm.valid || resetmessage">
+                              <span *ngIf="!resetmessage">Reset Password</span>
+                              <span *ngIf="resetmessage">Resetting...</span>
+                        </button>
+                        </div>
+                          
+                           
+                   
+                </div>
+                
+            </div>
+            
+        </div>
+        
+  
+   
+  </div>
+  </div>

@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+.ql-editor {
+    min-height: 400px !important;
+}
+
+.cdk-overlay-container {
+    z-index: 1051 !important;
+}
+
+
+.ck-editor__editable_inline {
+    min-height: 500px;
+}
+
+:root {
+    --ck-z-default: 100;
+  }
+
+:host {
+    --ck-z-default: 100;
+  }
+
+  ::ng-deep {
+    --ck-z-default: 100;    
+  }
+
+  :host ::ng-deep {
+    --ck-z-default: 100  !important;
+    
+  }
+
+  .ql-container {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+    font-size: 1rem !important;
+  }
+
+  ::ng-deep  .ql-container {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+    font-size: 1rem !important;
+  }
+
+  body {
+	--ck-z-default: 100;
+	--ck-z-modal: calc( var(--ck-z-default) + 999 );
+}
+
+/*
+	Override Bootstrap's CSS.
+	Note: this won't be necessary once the following issue is fixed and released:
+	https://github.com/ckeditor/ckeditor5-theme-lark/issues/189
+*/
+.ck.ck-button {
+	-webkit-appearance: none;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 99999 !important;
+}
+
+.mat-tooltip {
+  white-space: pre-line;
+}

@@ -1,0 +1,137 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                 
+                <div class="card">
+                    <div class="card-header card-header-danger card-color row">
+                        <h4 class="card-title col-sm-12">Pathways</h4>
+                         <div class="card-category col-sm-12 col-md-10"> Department of Radiology</div>
+                         <div class="col-sm-12 col-md-2" id="tablesearch">
+                              <form class="navbar-form">
+                                      <div class="input-group no-border">
+                                          <input id="search" type="text" value="" class="form-control" placeholder="Search..." (keyup)="applyFilter($event.target.value)">
+                                          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon" style="margin-top:-1px">
+                                              <i class="material-icons">search</i>
+                                              <div class="ripple-container"></div>
+                                          </button>
+                                      </div>
+                                  </form>
+                       </div>
+                      </div>
+                        
+                        
+                      <div class="row justify-content-md-center" *ngIf="loading">
+                              <img src="../../assets/img/loading.gif">
+                        </div>
+                        
+                   
+                    
+                   <!--  <div class="card-body"> -->
+                          <!--<button mat-raised-button *ngFor="let category of categories">{{category}}</button>-->
+                    <!--    <div class="table-responsive"> -->
+                          
+                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 datatable" matSort *ngIf="!loading">
+                                  
+                                    <!--- Note that these columns can be defined in any order.
+                                          The actual rendered columns are set as a property on the row definition" -->
+                                  
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="title">
+                                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                                    </ng-container>
+                                  
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="category">
+                                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                                    </ng-container>
+                                  
+                                    <!-- Weight Column -->
+                                    <ng-container matColumnDef="dateModify">
+                                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Modified </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.dateModify}} </td>
+                                    </ng-container>
+                                  
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="dateAccessed">
+                                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Accessed </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.dateAccessed}} </td>
+                                    </ng-container>
+  
+                                    <ng-container matColumnDef="tools">
+                                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tools </th>
+                                          <td mat-cell *matCellDef="let element"> 
+                                              <button mat-raised-button class="btn" (click)="launchFile(element,0)"><i class="material-icons">launch</i></button>    
+  
+                                                  <span class="dropdown">
+                                                      <button mat-raised-button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                              <i class="material-icons">save_alt</i>
+                                                      </button>
+                                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" *ngFor="let file of element.files" [href]="file.url" target="_blank">{{file.filename}}</a>
+                                                        
+                                                      </div>
+                                                    </span>
+                                                    <button mat-raised-button class="btn toolbtn" (click)="share(element)"><i class="material-icons">share</i></button>    
+                                                    
+                                          </td>
+                                        </ng-container>
+                                  
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                  </table>
+                                  <mat-paginator [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+                                  
+                              </div>
+                              
+                        <!-- </div>
+                    </div> -->
+                   
+                </div>
+                
+            </div>
+            
+        </div>
+        
+  
+  
+  
+  
+    
+  
+    <!-- View Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-big" role="document">
+            <div class="modal-content container">
+              <div class="modal-header row">
+                <h5 class="modal-title col-xs-12" id="exampleModalLongTitle">{{activeFile.title}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="container buttonrow" *ngIf="activeFile && activeFile.files && activeFile.files.length > 1">
+                      <button mat-raised-button type="button" *ngFor="let file of activeFile.files; let k=index" (click)="changeFile(k)" [ngClass]="{
+                          'selectedbutton': k === activeFileNum,
+                          'otherbutton': k !== activeFileNum
+                       }">{{file.filename}}</button>
+                  </div>
+              </div>
+              
+              <div class="modal-body" *ngIf="activeFile && activeFile.files && activeFileNum !== null">
+                      
+                     
+                         <app-upgrade [fileID]="activeFileURL"></app-upgrade>
+              
+                    
+              </div>
+              <div class="modal-footer">
+                <button type="button" mat-button data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      
+  </div>
+  

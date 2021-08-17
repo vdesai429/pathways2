@@ -1,0 +1,19 @@
+.separatorline {
+    border-top: 1px solid #ddd;
+}
+
+.darkgreen.active > a {
+    background-color: darkgreen !important;
+}
+
+.darkslate.active > a {
+    background-color: darkslateblue !important;
+}
+
+.footer {
+    
+        position: fixed !important;
+        left: 10px; /* Add this and change value to set the margin you want */
+        bottom: 15px;
+    
+}

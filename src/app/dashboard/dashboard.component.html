@@ -1,0 +1,64 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+
+        <div class="row justify-content-md-center" *ngIf="loading">
+                <img src="../../assets/img/loading.gif">
+          </div>
+
+      <div class="row" *ngIf="!loading">
+          <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="card card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">input</i>
+                      </div>
+                      <p class="card-category">Protocols</p>
+                      <h3 class="card-title">{{data.protocols}}
+                      </h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons text-danger">warning</i>
+                          <a href="javascript:void(0)">3 protocols due for annual review</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-12 col-sm-12">
+            <div class="card card-stats">
+                  <div class="card-header card-header-success card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">call_split</i>
+                      </div>
+                      <p class="card-category">Pathways</p>
+                      <h3 class="card-title">{{data.pathways}}</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">date_range</i> Last Accessed 24 Hours Ago
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-12 col-sm-12">
+            <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">content_copy</i>
+                      </div>
+                      <p class="card-category">Policies</p>
+                      <h3 class="card-title">{{data.policies}}</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">update</i> Just updated
+                      </div>
+                  </div>
+              </div>
+          </div>
+        
+     
+  </div>
+</div>
+</div>
